@@ -1,1 +1,3 @@
-/media/presentch.mp4
+/media/presentch*.mp4
+Sub*.csv
+Sub*.log
