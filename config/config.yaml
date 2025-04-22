@@ -1,0 +1,104 @@
+# config.yaml
+# === Subject info ===
+subinfo_fields:
+  - name: subject_id
+    type: int
+    constraints:
+      min: 101
+      max: 999
+      digits: 3
+
+  - name: session_name
+    type: string
+
+  - name: experimenter
+    type: string
+
+  - name: gender
+    type: choice
+    choices: [Male, Female]
+
+subinfo_mapping:
+    subject_id: "被试号"
+    session_name: "Session名称(Practice/Experiment)"
+    experimenter: "主试姓名或缩写"
+    gender: "性别"
+    Male: "男"
+    Female: "女"
+    registration_failed: "注册失败。"
+    registration_successful: "注册成功！"
+    invalid_input: "字段 {field} 输入无效。"
+
+
+# === Window settings ===
+window:
+  size: [1920, 1080]
+  monitor: testMonitor
+  units: deg
+  screen: 1
+  bg_color: gray
+  fullscreen: True
+
+# === Task-level settings ===
+task:
+  total_blocks: 1
+  total_trials: 1
+  trial_per_block: 1
+  conditions: [movie]
+  key_list: []
+  seed_mode: "same_across_sub"
+
+
+# === Stimuli (for MID task) ===
+stimuli:
+  fixation:
+    type: text
+    text: "+"
+    color: white
+
+  movie:
+    type: movie
+    path: ".assets/presentch.mp4"
+  
+  
+  general_instruction:
+    type: textbox
+    text: |
+      【自然刺激任务】
+
+      接下来您将观看一段视频。
+
+      请尽量保持放松和安静，注视屏幕中央。
+      观看过程中请避免身体移动和频繁眨眼。
+      只需自然观看并保持专注即可。
+      如果准备好了，请按【空格键】键开始任务。
+    color: white
+    pos: [0, 0] 
+    font: SimHei
+    alignment: center
+    letterHeight: 0.78
+
+
+  good_bye:
+    type: textbox
+    text: |
+      任务结束
+      
+      感谢您的参与
+      请按【空格键】键退出
+    color: white
+    font: SimHei
+    alignment: center
+    letterHeight: 0.78
+
+
+triggers:
+  exp_onset: 98
+  exp_end: 99
+
+  block_onset: 100
+  block_end: 101
+
+  movie_onset: 1
+
+
