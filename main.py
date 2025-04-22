@@ -71,7 +71,7 @@ stim_config={
 }
 stim_bank.add_from_dict(stim_config)
 stim_bank.preload_all()
-
+# stim_bank.preview_all()
 # 6. Setup trigger
 trigger_config = {
     **config.get('triggers', {})

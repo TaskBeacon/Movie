@@ -36,7 +36,7 @@ window:
   monitor: testMonitor
   units: deg
   screen: 1
-  bg_color: gray
+  bg_color: black
   fullscreen: True
 
 # === Task-level settings ===
@@ -58,7 +58,8 @@ stimuli:
 
   movie:
     type: movie
-    path: ".assets/presentch.mp4"
+    filename: "./assets/presentch.mp4"
+    size: [1920, 1080]
   
   
   general_instruction:
@@ -91,6 +92,8 @@ stimuli:
     alignment: center
     letterHeight: 0.78
 
+timing:
+  movie_duration: 210
 
 triggers:
   exp_onset: 98
