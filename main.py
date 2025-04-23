@@ -17,6 +17,7 @@ import sys
 import serial
 
 from src import run_trial
+import pandas as pd
 
 
 
@@ -115,7 +116,7 @@ block.run_trial(
     
 TrialUnit(win, 'block').add_stim(stim_bank.get('good_bye')).wait_and_continue(terminate=True)
     
-import pandas as pd
+
 df = pd.DataFrame(block.to_dict())
 df.to_csv(settings.res_file, index=False)
 
