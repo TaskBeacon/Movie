@@ -59,7 +59,7 @@ stimuli:
   movie:
     type: movie
     filename: "./assets/presentch.mp4"
-    size: [1920, 1080]
+    size: [1152, 648]
   
   
   general_instruction:
@@ -93,7 +93,7 @@ stimuli:
     letterHeight: 0.78
 
 timing:
-  movie_duration: 210
+  movie_duration: 204
 
 triggers:
   exp_onset: 98
@@ -103,5 +103,6 @@ triggers:
   block_end: 101
 
   movie_onset: 1
+  movie_offset: 2
 
 

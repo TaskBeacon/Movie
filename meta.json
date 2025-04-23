@@ -1,15 +1,14 @@
 {
-    "name": "Your Task Name",
-    "version": "0.3.1",
-    "description": "Monetary Incentive Delay Task built with psyflow",
-    "created_by": "Your Name or Lab",
-    "date_created": "2024-04-18",
-    "psyflow_version": "0.3.0",
-    "psychopy_version": "2023.2.1",
-    "tasks": ["Your Task Name"],
-    "stimuli_dir": "assets/",
-    "config_file": "config/config.yaml",
-    "entry_point": "main.py",
-    "default_language": "en"
-  }
-  
+  "name": "Naturalistic Movie Task",
+  "version": "0.1.0",
+  "description": "A naturalistic viewing task using a short film clip, built with psyflow.",
+  "created_by": "Zhipeng Cao",
+  "date_created": "2025-04-22",
+  "psyflow_version": "0.3.0",
+  "psychopy_version": "2023.2.1",
+  "tasks": ["Naturalistic Movie Task"],
+  "stimuli_dir": "assets/",
+  "config_file": "config/config.yaml",
+  "entry_point": "main.py",
+  "default_language": "zh"
+}

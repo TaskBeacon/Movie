@@ -5,7 +5,7 @@ from psyflow import BlockUnit
 from psyflow import TrialUnit
 from psyflow import TriggerSender
 from psyflow import TriggerBank
-from psyflow import generate_balanced_conditions
+from psyflow import generate_balanced_conditions, count_down
 
 from psychopy.visual import Window
 from psychopy.hardware import keyboard
@@ -47,7 +47,6 @@ task_config = {
 
 settings = TaskSettings.from_dict(task_config)
 settings.add_subinfo(subject_data)
-
 
 
 # 4. Set up window & input
@@ -108,13 +107,12 @@ def _block_end(b):
     triggersender.send(triggerbank.get("block_end"))
 
 TrialUnit(win, 'block').add_stim(stim_bank.get('general_instruction')).wait_and_continue()
-        
+count_down(win, 3)
 # 9. run block
 block.run_trial(
     partial(run_trial, stim_bank=stim_bank, trigger_sender=triggersender, trigger_bank=triggerbank)
 )
     
-
 TrialUnit(win, 'block').add_stim(stim_bank.get('good_bye')).wait_and_continue(terminate=True)
     
 import pandas as pd
