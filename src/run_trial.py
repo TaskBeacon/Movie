@@ -2,10 +2,6 @@ from psyflow import TrialUnit
 from functools import partial
 
 def run_trial(win, kb, settings, condition, stim_bank, trigger_sender, trigger_bank):
-    """
-    Run a single MID trial sequence (fixation → cue → anticipation → target → feedback).
-    See full docstring above...
-    """
 
     trial_data = {"condition": condition}
     make_unit = partial(TrialUnit, win=win, triggersender=trigger_sender)
