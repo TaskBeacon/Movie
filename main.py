@@ -102,7 +102,7 @@ block = BlockUnit(
 StimUnit(win, 'block').add_stim(stim_bank.get('good_bye')).wait_and_continue(terminate=True)
     
 
-df = pd.DataFrame(block.to_dict())
+df = pd.DataFrame(block.get_dict())
 df.to_csv(settings.res_file, index=False)
 
 
