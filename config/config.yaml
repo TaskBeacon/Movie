@@ -60,20 +60,22 @@ stimuli:
   movie:
     type: movie
     filename: "./assets/presentch.mp4"
-    size: [1152, 648]
+    size: [22.1, 12.4]
+    units: deg
   
   
-  general_instruction:
+  instruction_text:
     type: textbox
     text: |
-      【自然刺激任务】
+      【观影任务说明】
 
-      接下来您将观看一段视频。
+      接下来您将观看一段视频
 
-      请尽量保持放松和安静，注视屏幕中央。
-      观看过程中请避免身体移动和频繁眨眼。
-      只需自然观看并保持专注即可。
-      如果准备好了，请按【空格键】键开始任务。
+      请尽量保持放松和安静，注视屏幕中央
+      观看过程中请避免身体移动和频繁眨眼
+      只需自然观看并保持专注即可
+      如果准备好了
+      请按【空格键】开始任务
     color: white
     pos: [0, 0] 
     font: SimHei

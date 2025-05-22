@@ -32,11 +32,16 @@ trigger_sender = TriggerSender(
 # 5. Set up window & input
 win, kb = initialize_exp(settings)
 # 6. Setup stimulus bank
-stim_bank = StimBank(win,cfg['stim_config']).preload_all()
+stim_bank = StimBank(win,cfg['stim_config'])\
+    .convert_to_voice('instruction_text')\
+    .preload_all()
 # stim_bank.preview_all() 
 settings.save_to_json() # save all settings to json file
 
-StimUnit(win, 'block').add_stim(stim_bank.get('general_instruction')).wait_and_continue()
+StimUnit(win, 'block')\
+    .add_stim(stim_bank.get('instruction_text'))\
+    .add_stim(stim_bank.get('instruction_text_voice'))\
+    .wait_and_continue()
 count_down(win, 3)
 
 block = BlockUnit(
