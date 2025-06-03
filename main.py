@@ -34,7 +34,7 @@ trigger_sender = TriggerSender(
 win, kb = initialize_exp(settings)
 # 6. Setup stimulus bank
 stim_bank = StimBank(win,cfg['stim_config'])\
-    .convert_to_voice('instruction_text')\
+    .convert_to_voice(['instruction_text','good_bye'])\
     .preload_all()
 # stim_bank.preview_all() 
 settings.save_to_json() # save all settings to json file
@@ -60,6 +60,7 @@ block = BlockUnit(
 
 StimUnit('goodbye',win,kb)\
     .add_stim(stim_bank.get('good_bye'))\
+    .add_stim(stim_bank.get('good_bye_voice'))\
     .wait_and_continue(terminate=True)
 trigger_sender.send(settings.triggers.get("exp_end"))
 # 10. Close everything
