@@ -8,11 +8,14 @@ subinfo_fields:
       max: 999
       digits: 3
 
-  - name: session_name
+  - name: subname    
     type: string
 
-  - name: experimenter
-    type: string
+  - name: age 
+    type: int
+    constraints:
+      min: 5
+      max: 60
 
   - name: gender
     type: choice
@@ -20,14 +23,14 @@ subinfo_fields:
 
 subinfo_mapping:
     subject_id: "被试号"
-    session_name: "Session名称(Practice/Experiment)"
-    experimenter: "主试姓名或缩写"
+    subname: "被试姓名(拼音)"
+    age: "年龄"
     gender: "性别"
     Male: "男"
     Female: "女"
     registration_failed: "注册失败。"
     registration_successful: "注册成功！"
-    invalid_input: "字段 {field} 输入无效。"
+    invalid_input: "字段 {field} 输入无效"
 
 
 # === Window settings ===
@@ -37,11 +40,12 @@ window:
   screen: 1
   bg_color: black
   fullscreen: True
-  monitor_width_cm: 33.62
-  monitor_distance_cm: 57
+  monitor_width_cm: 60
+  monitor_distance_cm: 72
 
 # === Task-level settings ===
 task:
+  task_name: "eeg_movie_present"
   total_blocks: 1
   total_trials: 1
   trial_per_block: 1
@@ -81,8 +85,9 @@ stimuli:
     font: SimHei
     alignment: center
     letterHeight: 0.78
-
-
+    units: deg
+    size: [20, 5]
+  
   good_bye:
     type: textbox
     text: |
@@ -94,7 +99,9 @@ stimuli:
     font: SimHei
     alignment: center
     letterHeight: 0.78
-
+    units: deg
+    size: [20, 5]
+    
 timing:
   movie_duration: 204
 
