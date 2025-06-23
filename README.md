@@ -1,80 +1,109 @@
-# Naturalistic Movie Task – PsyFlow Version
+# Movie Presentation Task (EEG_Movie_Present)
 
-This task presents a short naturalistic video (e.g., *"presentch.mp4"*) to participants in a controlled environment while recording neural or behavioral responses (e.g., EEG, fMRI, or eye tracking). It is implemented using the [PsyFlow](https://taskbeacon.github.io/psyflow/) framework.
+| Field                | Value                        |
+|----------------------|------------------------------|
+| Name                 | Movie Presentation Task (EEG_Movie_Present) |
+| Version              | 1.0                          |
+| URL / Repository     |                              |
+| Short Description    | A passive video-watching task with a centered movie clip for EEG studies |
+| Created By           |Zhipeng Cao (zhipeng30@foxmail.com) |
+| Date Updated         |                              |
+| PsyFlow Version      |                              |
+| PsychoPy Version     |                              |
 
+## 1. Task Overview
 
+The Movie Presentation Task is a naturalistic EEG paradigm where participants passively watch a centered movie clip on screen. Unlike full-screen video presentations, the movie is rendered at a fixed visual size while the background remains visible. This format preserves spatial context and minimizes abrupt visual transitions, supporting naturalistic stimulus presentation for continuous EEG data acquisition. No behavioral responses are required; only onset and offset triggers are logged for synchronization.
 
-## Task Overview
+## 2. Task Flow
 
-Participants are instructed to watch a short film clip passively. During the video presentation, no user response is required. After the video ends, the task concludes with a thank-you screen.
+### Block-Level Flow
 
-This task is particularly useful for naturalistic paradigms where spontaneous brain activity or subjective responses are analyzed post hoc.
+| Step                       | Description                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| Load Config                | Load YAML-based task settings for subject info, stimuli, window, triggers   |
+| Collect Subject Info       | Prompt for subject ID, name, age, and gender                                |
+| Setup Triggers             | Configure serial trigger output via `loop://` or COM                        |
+| Initialize Window/Input    | Create full-screen PsychoPy window and keyboard                            |
+| Load Stimuli               | Load instructions and centered movie video; convert to voice               |
+| Show Instructions          | Present visual and audio instructions; wait for spacebar                   |
+| Countdown                  | Display a 3-second countdown before video starts                            |
+| Movie Playback             | Show centered video stimulus with triggers on start and end                |
+| Show Goodbye               | Display thank-you screen                                                    |
+| Save Data                  | Save trial metadata in CSV format                                           |
+| Close                      | Close serial port and PsychoPy session                                      |
 
+### Trial-Level Flow
 
+| Step             | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| Movie Presentation | Show `presentch.mp4` (22.1 × 12.4 deg) centered on screen for 204 seconds |
+| Trigger Onset    | Send EEG trigger at video start (`movie_onset = 1`)                        |
+| Trigger Offset   | Send EEG trigger at video end (`movie_offset = 2`)                         |
+| Trial Logging    | Save trial condition, duration, and triggers                                |
 
-## Task Flow
+### Other Logic
 
-| Step        | Description |
-|-|-|
-| Instruction | A textbox presents task instructions in Chinese. The participant presses the **space bar** to begin. |
-| Movie       | The movie (`presentch.mp4`) is presented for **204 seconds**, with triggers sent at onset and offset. |
-| Goodbye     | A textbox thanks the participant and prompts for exit via **space bar**. |
+| Component         | Description                                                        |
+|-------------------|--------------------------------------------------------------------|
+| None              | No adaptive logic, dynamic trial structure, or stimulus randomization present |
 
+This task is entirely passive and fixed across all participants.
 
+## 3. Configuration Summary
 
-## Configuration Summary
+### a. Subject Info
 
-All key settings are stored in the `config.yaml` file. Here's a breakdown of relevant sections:
+| Field       | Meaning                        |
+|-------------|--------------------------------|
+| subject_id  | Participant ID (101–999)       |
+| subname     | Participant name (pinyin)      |
+| age         | Age (5–60)                     |
+| gender      | Gender (Male/Female)           |
 
-### Subject Info (`subinfo_fields`)
-Participants are registered with:
-- **Subject ID** (3-digit number from 101–999)
-- **Session name** (e.g., Practice, Experiment)
-- **Experimenter name**
-- **Gender** (Male or Female)
+### b. Window Settings
 
-These fields are localized to Chinese via `subinfo_mapping`.
+| Parameter             | Value         |
+|-----------------------|---------------|
+| size                  | [1920, 1080]  |
+| units                 | deg           |
+| screen                | 1             |
+| bg_color              | black         |
+| fullscreen            | True          |
+| monitor_width_cm      | 60            |
+| monitor_distance_cm   | 72            |
 
+### c. Stimuli
 
+| Name             | Type     | Description                                                     |
+|------------------|----------|-----------------------------------------------------------------|
+| movie            | movie    | `presentch.mp4`, centered at 22.1 × 12.4 deg (not full-screen)  |
+| instruction_text | textbox  | Pre-task guidance with keypress to continue                     |
+| good_bye         | textbox  | End-of-task thank-you message                                   |
+| fixation         | text     | Central fixation (not used during movie playback)               |
 
-### Window Settings (`window`)
-- Resolution: `1920 × 1080`
-- Units: `deg`
-- Fullscreen: `True`
-- Monitor: `testMonitor`
-- Background color: `black`
+### d. Timing
 
+| Phase           | Duration (s) |
+|------------------|--------------|
+| movie            | 204          |
 
+### e. Triggers
 
-### Stimuli (`stimuli`)
-| Stimulus       | Type   | Notes |
-|-|-|-|
-| `general_instruction` | `textbox` | Instruction screen in Chinese |
-| `movie`        | `movie` | File: `./assets/presentch.mp4`, size: `[1152, 648]` |
-| `good_bye`     | `textbox` | End message in Chinese |
-| `fixation`     | `text` | Not used in current task, but available |
+| Event           | Code |
+|------------------|------|
+| Experiment Start | 98   |
+| Experiment End   | 99   |
+| Block Start      | 100  |
+| Block End        | 101  |
+| Movie Onset      | 1    |
+| Movie Offset     | 2    |
 
+## 4. Methods
 
+Participants engaged in a passive viewing task, during which they watched a 204-second movie clip (`The present`) presented at the center of the screen within a fixed visual angle (22.1 × 12.4 degrees). While the display window occupied the full screen, the movie itself was embedded within it rather than scaled to full-screen size. This design allows for reduced visual noise and stable peripheral context. Participants were instructed to remain still, focus on the screen, and minimize eye movements and blinking. No responses were required during the video. A trigger was sent at the start (`movie_onset`) and end (`movie_offset`) of the movie to synchronize EEG data collection. The experiment consisted of one block and one trial. 
 
-### Timing (`timing`)
-- `movie_duration`: `204` seconds
+## 5. References
+>Alexander, L. M., Escalera, J., Ai, L., Andreotti, C., Febre, K., Mangone, A., ... & Milham, M. P. (2017). An open resource for transdiagnostic research in pediatric mental health and learning disorders. Scientific data, 4(1), 1-26.
 
-
-### Triggers (`triggers`)
-The following triggers are sent via `TriggerSender`:
-- **Experiment**: `exp_onset = 98`, `exp_end = 99`
-- **Block**: `block_onset = 100`, `block_end = 101`
-- **Movie**: `movie_onset = 1`, `movie_offset = 2`
-
-These are typically used for synchronizing EEG or fMRI recordings.
-
-
-
-## Running the Task
-
-1. Make sure all dependencies are installed (see below).
-2. Place the movie file in `./assets/presentch.mp4`.
-3. Launch the experiment via:
-
-```bash
-python main.py
+>Shirazi, S. Y., Franco, A., Scopel Hoffmann, M., Esper, N. B., Truong, D., Delorme, A., ... & Makeig, S. (2024). HBN-EEG: The FAIR implementation of the Healthy Brain Network (HBN) electroencephalography dataset. bioRxiv, 2024-10.
