@@ -1,15 +1,16 @@
-# Movie Presentation Task (EEG_Movie_Present)
+# Movie Watching Task
 
 | Field                | Value                        |
 |----------------------|------------------------------|
-| Name                 | Movie Presentation Task (EEG_Movie_Present) |
-| Version              | 1.0                          |
-| URL / Repository     |                              |
+| Name                 | Movie Watching Task |
+| Version              | main (1.0)                          |
+| URL / Repository     | https://github.com/TaskBeacon/Movie |
 | Short Description    | A passive video-watching task with a centered movie clip for EEG studies |
 | Created By           |Zhipeng Cao (zhipeng30@foxmail.com) |
-| Date Updated         |                              |
-| PsyFlow Version      |                              |
-| PsychoPy Version     |                              |
+| Date Updated         |2025/06/23   |
+| PsyFlow Version      | 0.1.0       |
+| PsychoPy Version     |2025.1.1     |
+| Modality             | EEG         |
 
 ```{note}
 The movie is not publicly available due to potential copyright issues.
