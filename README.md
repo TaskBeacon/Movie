@@ -11,6 +11,10 @@
 | PsyFlow Version      |                              |
 | PsychoPy Version     |                              |
 
+```{note}
+The movie is not publicly available due to potential copyright issues.
+```
+
 ## 1. Task Overview
 
 The Movie Presentation Task is a naturalistic EEG paradigm where participants passively watch a centered movie clip on screen. Unlike full-screen video presentations, the movie is rendered at a fixed visual size while the background remains visible. This format preserves spatial context and minimizes abrupt visual transitions, supporting naturalistic stimulus presentation for continuous EEG data acquisition. No behavioral responses are required; only onset and offset triggers are logged for synchronization.
